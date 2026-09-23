@@ -27,12 +27,13 @@ export class videojoc implements Videojoc {
     //metodes
     //recore l'array i retorna tots els jocs descarregats
     getDescarregats(videojocs: videojoc[]) {
+        const jocsDescarregats = [];
         for (const joc of videojocs) {
             if (joc.descarregat) {
-                return this.nom;
+                jocsDescarregats.push(joc);
             }
         }
-        return null;
+        return jocsDescarregats;
     }
 
     findJocById(id: number, videojocs: videojoc[]) {

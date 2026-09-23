@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Videojoc } from './models/Videojoc';
+import { Videojoc, videojoc } from './models/Videojoc';
 import { saludar, esMajorEdat, sumarArray } from './models/funcions';
 import { Alumne } from './models/alumne';
 
@@ -41,5 +41,26 @@ export class App {
 
         console.log(alumne2.presentar());
         console.log(`Ha aprovat l'Anna? ${alumne2.haAprobat} (Mitjana: ${alumne2.mitjanaNotes})`);
+
+        // Comprovació de Videojocs (mètodes) amb l'array existent
+        console.log("--- Comprovant Videojocs amb this.llistajcos ---");
+        
+        // Convertim els objectes de la interfície a instàncies de la classe 'videojoc'
+        // perquè tinguin els mètodes disponibles
+        const jocsInstanciats = this.llistajcos.map(
+            j => new videojoc(j.nom, j.id, j.platforma, j.pes, j.versio, j.descarregat)
+        );
+
+        // Agafem el primer joc per cridar els seus mètodes
+        const jocExemple = jocsInstanciats[0];
+
+        console.log("Formatar Joc (GTA V):", jocExemple.formatarJoc());
+        
+        const jocId3 = jocExemple.findJocById(3, jocsInstanciats);
+        console.log("Cercar joc ID 3:", jocId3 ? jocId3.nom : "No trobat");
+
+        const jocsDescarregats = jocExemple.getDescarregats(jocsInstanciats);
+        const nomsDescarregats = jocsDescarregats.map(j => j.nom).join(', ');
+        console.log("Jocs descarregats:", nomsDescarregats);
     }
 }
