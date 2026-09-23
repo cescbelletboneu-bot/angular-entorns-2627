@@ -1,6 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Videojoc } from './interfaces/Videojoc';
+import { Videojoc } from './models/Videojoc';
+import { saludar, esMajorEdat, sumarArray } from './models/funcions';
+import { Alumne } from './models/alumne';
 
 
 @Component({
@@ -11,6 +13,7 @@ import { Videojoc } from './interfaces/Videojoc';
 })
 
 export class App {
+    title = signal('angular-entorns-2627');
 
     llistajcos: Videojoc[] = [
         { nom: "GTA V", id: 1, platforma: "PS4", pes: 69.89, versio: "1.0", descarregat: false },
@@ -19,4 +22,24 @@ export class App {
         { nom: "Call of Duty", id: 4, platforma: "Xbox", pes: 199.41, versio: "1.0", descarregat: false },
         { nom: "Cyberpunk 2077", id: 5, platforma: "PC", pes: 55.63, versio: "1.0", descarregat: true },
     ]
+
+    constructor() {
+        // Comprovació de funcions.ts
+        console.log("--- Comprovant Funcions ---");
+        console.log(saludar("Maria"));
+        console.log("Edat 25 és major?:", esMajorEdat(25));
+        console.log("Edat 15 és major?:", esMajorEdat(15));
+        console.log("Suma [10, 20, 30]:", sumarArray([10, 20, 30]));
+
+        // Comprovació d'Alumne
+        console.log("--- Comprovant Alumnes ---");
+        const alumne1 = new Alumne("Joan", 21, "DAW", [7, 8, 9, 6]);
+        const alumne2 = new Alumne("Anna", 19, "DAM", [4, 5, 3, 2]);
+
+        console.log(alumne1.presentar());
+        console.log(`Ha aprovat el Joan? ${alumne1.haAprobat} (Mitjana: ${alumne1.mitjanaNotes})`);
+
+        console.log(alumne2.presentar());
+        console.log(`Ha aprovat l'Anna? ${alumne2.haAprobat} (Mitjana: ${alumne2.mitjanaNotes})`);
+    }
 }
