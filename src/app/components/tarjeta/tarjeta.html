@@ -1,6 +1,17 @@
 <!-- <p>tarjeta works!</p> -->
+@for (producte of producte; track producte.nom) {
 <div class="tarjeta">
     <h2>{{producte.nom}}</h2>
-    <p>{{producte.preu}}€</p>
-    <p>{{producte.descripcio}}</p>
+
+    @if (producte.preu < 20) { <p>Oferta</p>
+        }
+        @if (producte.preu == 0) {
+        <p>Gratuït</p>
+        }
+        @if (producte.preu > 100) {
+        <p>Premium</p>
+        }
+        <p>{{producte.preu}}€</p>
+        <p>{{producte.descripcio}}</p>
 </div>
+}
