@@ -1,0 +1,16 @@
+<article [class]="teEstoc ? 'fitxa' : 'fitxa esgotat'" [class.confirmat]="afegitAlCarret">
+    <h2>{{ nom }}</h2>
+    <p>{{ preu }}€</p>
+
+    @if (!teEstoc) {
+    <p>Sense estoc</p>
+    }
+
+    <button [disabled]="afegitAlCarret || !teEstoc" (click)="afegir()">
+        Afegir al carret
+    </button>
+
+    @if (afegitAlCarret) {
+    <p>Afegit al carret!</p>
+    }
+</article>

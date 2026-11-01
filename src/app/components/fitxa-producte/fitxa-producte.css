@@ -1,0 +1,16 @@
+.fitxa {
+    border: 2px solid black;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+}
+
+.esgotat {
+    opacity: 0.5;
+}
+
+/* S'aplica quan afegitAlCarret és true */
+.confirmat {
+    border: 2px solid #70AD47;
+    background: #f0fff0;
+}
